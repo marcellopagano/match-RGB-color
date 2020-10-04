@@ -7,7 +7,7 @@ body {
 #container {
     /* background-color: slategray;  */
     background-image: url('../img/purple.jpg');
-    background-size: cover; 
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -60,7 +60,7 @@ body {
 .cell {
     border-radius: 5px;
     border: 1px solid darkslategray;
-    transition: all .1s linear;
+    transition: box-shadow .1s ease;
 }
 
 .cell:hover {
@@ -83,7 +83,7 @@ body {
     height: 50px;
 }
 
-#winMessage{
+#winMessage {
     display: none;
     position: absolute;
     width: 100%;
@@ -92,7 +92,19 @@ body {
     left: 0;
     font-size: 3em;
     color: white;
-    background-color: rgba(0,0,0,.7);
+    background-color: rgba(0, 0, 0, .7);
     justify-content: center;
     align-items: center;
+}
+
+#fadeText {
+    position: absolute;
+    color: white;
+    bottom: 50px;
+    left: calc(50% - 50px);
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    font-size: 2em;
+    text-shadow: 1px 1px 1px black;
 }

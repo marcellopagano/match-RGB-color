@@ -23,7 +23,7 @@ function initQuestion() {
     questionDisplay.innerText = question.toUpperCase();
     console.log(question, rgbCells);
 }
-
+// fn check win condition
 function checkWin() {
     if (answerT >= answerF + 5) {
         gameOver = true;

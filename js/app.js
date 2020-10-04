@@ -4,7 +4,7 @@ const cell = document.getElementsByClassName('cell'),
     startBtn = document.getElementById('startBtn'),
     resetScore = document.getElementById('resetScore'),
     questionDisplay = document.getElementById("question"),
-    answerDisplay = document.getElementById("answer"),
+    answerDisplay = document.getElementById("fadeText"),
     answerDisplayT = document.getElementById("answerT"),
     answerDisplayF = document.getElementById("answerF"),
     winMessage = document.getElementById("winMessage");
@@ -38,7 +38,6 @@ startBtn.addEventListener('click', () => {
     // reset var
     rgbCells = [];
     colorMatch = false;
-    answerDisplay.textContent = "";
     startBtn.style.display = 'none';
     // init call fn
     displayAllCells();
@@ -55,14 +54,14 @@ const init = () => {
     initQuestion();
     Array.from(cell).forEach(el => {
         // event audio cell mouse hover
-        el.addEventListener('mouseenter', ()=>{
+        el.addEventListener('mouseenter', () => {
             audio.CellHover.play();
+            answerDisplay.textContent = '';
         });
         // get event from cell click    
         el.addEventListener('click', cellClick);
         // callback event fn
         function cellClick() {
-            
             // stop if color match
             if (colorMatch == true) {
                 // audio cell error click
@@ -78,13 +77,13 @@ const init = () => {
             if (answer == question) {
                 colorMatch = true;
                 startBtn.style.display = 'block';
-                answerDisplay.textContent = "true";
+                answerDisplay.textContent = "Correct!";
                 answerDisplayT.textContent = ++answerT;
                 // check win
                 checkWin();
             } else {
                 el.style.visibility = 'hidden';
-                answerDisplay.textContent = "false";
+                answerDisplay.textContent = "Wrong!";
                 answerDisplayF.textContent = ++answerF;
             }
         }
