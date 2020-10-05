@@ -38,7 +38,7 @@ startBtn.addEventListener('click', () => {
     initQuestion();
 });
 // main
-export const init = () => {
+const init = () => {
     // container count and answer(true/false)  
     constD.answerDisplayT.textContent = constD.answerT;
     constD.answerDisplayF.textContent = constD.answerF;
@@ -82,3 +82,5 @@ export const init = () => {
         }
     });
 }
+
+init();
