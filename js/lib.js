@@ -37,7 +37,7 @@ function rnd() {
 }
 // fn check win condition
 function checkWin() {
-    if (constD.answerT >= constD.answerF + 1) {
+    if (constD.answerT >= constD.answerF + 5) {
         constD.gameOver = true;
         constD.winMessage.style.display = 'flex';
         constD.startBtn.style.display = 'none';
