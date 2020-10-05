@@ -1,5 +1,4 @@
 import { constD, displayAllCells, initColors, rnd, checkWin, audio, initQuestion } from './lib.js';
-'use strict';
 // new game event
 newGame.addEventListener('click', () => {
     // audio button click

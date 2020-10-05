@@ -1,4 +1,3 @@
-'use strict';
 // object declarations
 const constD = {
     cell: document.getElementsByClassName('cell'),
