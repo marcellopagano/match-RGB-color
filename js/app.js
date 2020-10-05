@@ -1,43 +1,36 @@
+import { constD, displayAllCells, initColors, rnd, checkWin, audio, initQuestion } from './lib.js';
 'use strict';
-// init declarations
-const cell = document.getElementsByClassName('cell'),
-    startBtn = document.getElementById('startBtn'),
-    resetScore = document.getElementById('resetScore'),
-    questionDisplay = document.getElementById("question"),
-    answerDisplay = document.getElementById("fadeText"),
-    answerDisplayT = document.getElementById("answerT"),
-    answerDisplayF = document.getElementById("answerF"),
-    winMessage = document.getElementById("winMessage");
-let answerT = 0,
-    answerF = 0,
-    gameOver = false,
-    colorMatch = false,
-    rgbCells = [],
-    question = '',
-    answer = '';
-// score reset event
-resetScore.addEventListener('click', () => {
+// new game event
+newGame.addEventListener('click', () => {
     // audio button click
     audio.Button.play();
     // reset var
-    gameOver = false;
-    answerT = 0;
-    answerF = 0;
-    answerDisplayT.textContent = answerT;
-    answerDisplayF.textContent = answerF;
-    winMessage.style.display = 'none';
+    constD.gameOver = false;
+    constD.answerT = 0;
+    constD.answerF = 0;
+    constD.rgbCells = [];
+    constD.colorMatch = false;
+    startBtn.style.display = 'none';
+    constD.answerDisplayT.textContent = constD.answerT;
+    constD.answerDisplayF.textContent = constD.answerF;
+    constD.answerDisplay.textContent = '';
+    constD.winMessage.style.display = 'none';
+    // init call fn
+    displayAllCells();
+    initColors();
+    initQuestion();
 });
 // start event new RGB color 
 startBtn.addEventListener('click', () => {
     // check win game 
-    if (gameOver === true) {
+    if (constD.gameOver === true) {
         return;
     }
     // audio button click
     audio.Button.play();
     // reset var
-    rgbCells = [];
-    colorMatch = false;
+    constD.rgbCells = [];
+    constD.colorMatch = false;
     startBtn.style.display = 'none';
     // init call fn
     displayAllCells();
@@ -45,49 +38,47 @@ startBtn.addEventListener('click', () => {
     initQuestion();
 });
 // main
-const init = () => {
+export const init = () => {
     // container count and answer(true/false)  
-    answerDisplayT.textContent = answerT;
-    answerDisplayF.textContent = answerF;
+    constD.answerDisplayT.textContent = constD.answerT;
+    constD.answerDisplayF.textContent = constD.answerF;
     // init call fn
     initColors();
     initQuestion();
-    Array.from(cell).forEach(el => {
+    Array.from(constD.cell).forEach(el => {
         // event audio cell mouse hover
         el.addEventListener('mouseenter', () => {
             audio.CellHover.play();
-            answerDisplay.textContent = '';
+            constD.answerDisplay.textContent = '';
         });
         // get event from cell click    
         el.addEventListener('click', cellClick);
         // callback event fn
         function cellClick() {
             // stop if color match
-            if (colorMatch == true) {
+            if (constD.colorMatch == true) {
                 // audio cell error click
                 audio.CellError.play();
                 return;
             }
             // audio cell click
             audio.Cell.play();
-            answer = el.style.backgroundColor;
+            constD.answer = el.style.backgroundColor;
             // debug console
-            console.log(answer, question);
+            console.log(constD.answer, constD.question);
             // check response
-            if (answer == question) {
-                colorMatch = true;
+            if (constD.answer == constD.question) {
+                constD.colorMatch = true;
                 startBtn.style.display = 'block';
-                answerDisplay.textContent = "Correct!";
-                answerDisplayT.textContent = ++answerT;
+                constD.answerDisplay.textContent = "Correct!";
+                constD.answerDisplayT.textContent = ++constD.answerT;
                 // check win
                 checkWin();
             } else {
                 el.style.visibility = 'hidden';
-                answerDisplay.textContent = "Wrong!";
-                answerDisplayF.textContent = ++answerF;
+                constD.answerDisplay.textContent = "Wrong!";
+                constD.answerDisplayF.textContent = ++constD.answerF;
             }
         }
     });
 }
-// call main
-init();

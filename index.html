@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <div id="logo"><img src="./img/logo.png" alt=""></div>
     <div id="question"></div>
     <div id="container" class="aniBg">
         <div id="grid">
@@ -24,13 +25,14 @@
     <div id="answer"></div>
     <div id="answerT"></div>
     <div id="answerF"></div>
-    <div id="winMessage">You Win!!!</div>
+    <div id="winMessage"><img src="./img/logo.png" alt="">You Win!!!</div>
     <button id="startBtn">New RBG Color</button>
-    <button id="resetScore">Reset Score</button>
-    
-    <script src="./js/lib.js"></script>
-    <script src="./js/app.js"></script>
-    
+    <button id="newGame">New Game</button>
+
+    <script type="module">
+        import { init } from './js/app.js';
+        init();
+    </script>
 </body>
 
 </html>
