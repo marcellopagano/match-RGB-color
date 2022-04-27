@@ -63,8 +63,7 @@ const init = () => {
             // audio cell click
             audio.Cell.play();
             constD.answer = el.style.backgroundColor;
-            // debug console
-            console.log(constD.answer, constD.question);
+
             // check response
             if (constD.answer == constD.question) {
                 constD.colorMatch = true;

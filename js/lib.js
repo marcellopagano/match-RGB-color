@@ -58,7 +58,6 @@ function initQuestion() {
     constD.question = constD.rgbCells[Math.random() * constD.rgbCells.length | 0];
     // question = rgbCells[Math.floor(Math.random() * rgbCells.length)];
     constD.questionDisplay.innerText = constD.question.toUpperCase();
-    console.log(constD.question, constD.rgbCells);
 }
 
 export { constD, displayAllCells, initColors, rnd, checkWin, audio, initQuestion };
